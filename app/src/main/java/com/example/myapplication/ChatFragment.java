@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -989,7 +990,7 @@ public class ChatFragment extends Fragment {
             .setMessage("确定要退出登录吗？")
             .setPositiveButton("确定", new android.content.DialogInterface.OnClickListener() {
                 @Override
-                public void onClick(android.app.DialogInterface dialog, int which) {
+                public void onClick(DialogInterface dialog, int which) {
 
                     com.example.myapplication.utils.TokenManager tokenManager =
                         new com.example.myapplication.utils.TokenManager(getContext());

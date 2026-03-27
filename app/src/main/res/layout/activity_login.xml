@@ -31,7 +31,6 @@
                 android:textSize="15sp"
                 android:textColor="@color/white"
                 android:background="@drawable/language_button_background_new"
-                android:selected="true"
                 android:clickable="true"
                 android:focusable="true"/>
 
@@ -128,7 +127,6 @@
                             android:textStyle="bold"
                             android:textColor="@color/white"
                             android:background="@drawable/tab_account_background"
-                            android:selected="true"
                             android:clickable="true"
                             android:focusable="true"/>
 
