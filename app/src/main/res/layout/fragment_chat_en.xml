@@ -186,8 +186,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:paddingBottom="16dp"
-        android:fillViewport="true"
-        android:visibility="gone">
+        android:fillViewport="true">
 
         <GridLayout
             android:layout_width="match_parent"
@@ -201,12 +200,11 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/smartQAButton"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="100dp"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                android:layout_marginTop="40dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 app:cardBackgroundColor="@android:color/transparent"
@@ -218,7 +216,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
                     android:gravity="start"
                     android:background="@drawable/gradient_card_1">
 
@@ -246,7 +245,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/smartTranslateButton"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="100dp"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
@@ -262,7 +261,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
                     android:gravity="start"
                     android:background="@drawable/gradient_card_2">
 
@@ -290,12 +290,11 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/semanticButton"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="100dp"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                android:layout_marginTop="40dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 app:cardBackgroundColor="@android:color/transparent"
@@ -307,7 +306,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
                     android:gravity="start"
                     android:background="@drawable/gradient_card_3">
 
@@ -335,7 +335,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/fourthButton"
                 android:layout_width="0dp"
-                android:layout_height="160dp"
+                android:layout_height="100dp"
                 android:layout_row="1"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
@@ -351,7 +351,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
                     android:gravity="start"
                     android:background="@drawable/gradient_card_4">
 
@@ -409,11 +410,77 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
-        android:background="?android:attr/colorBackground"
         android:elevation="8dp"
-        android:padding="12dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingHorizontal="12dp"
         android:visibility="visible">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start">
 
+            <!-- Thinking button -->
+            <ToggleButton
+                android:id="@+id/thinkingToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textOn="🧠 Thinking"
+                android:textOff="🧠 Thinking"
+                android:textSize="14sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@drawable/thinking_button_border"
+                android:textColor="@color/toggle_button_text_color_flat"
+                android:checked="false"
+                android:layout_marginEnd="16dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp" />
+            <com.hjq.shape.layout.ShapeLinearLayout
+                android:id="@+id/save_img"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                app:shape_solidColor="@color/white"
+                app:shape_strokeColor="#BBBBBB"
+                app:shape_strokeSize="1dp"
+                android:paddingHorizontal="12dp"
+                app:shape_radius="20dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_upload_image"/>
+                <com.hjq.shape.view.ShapeTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:text="Upload"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:textSize="14dp"/>
+            </com.hjq.shape.layout.ShapeLinearLayout>
+            <!-- Internet button - Hidden -->
+            <ToggleButton
+                android:id="@+id/internetToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:visibility="gone"
+                android:textOn="🌐 Internet"
+                android:textOff="🌐 Internet"
+                android:textSize="14sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="@color/toggle_button_text_color_flat"
+                android:checked="false"
+                android:minWidth="0dp"
+                android:minHeight="0dp" />
+
+        </LinearLayout>
         <!-- Test button (Debug only) -->
         <Button
             android:id="@+id/testVoiceButton"
@@ -550,60 +617,7 @@
         </LinearLayout>
 
         <!-- Function buttons area -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:gravity="start">
 
-            <!-- Thinking button -->
-            <ToggleButton
-                android:id="@+id/thinkingToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:textOn="🧠 Thinking"
-                android:textOff="🧠 Thinking"
-                android:textSize="14sp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:background="@drawable/thinking_button_border"
-                android:textColor="@color/toggle_button_text_color_flat"
-                android:checked="false"
-                android:layout_marginEnd="16dp"
-                android:minWidth="0dp"
-                android:minHeight="0dp" />
-            <com.hjq.shape.view.ShapeTextView
-                android:id="@+id/save_img"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:text="Upload"
-                app:shape_solidColor="@color/white"
-                app:shape_strokeColor="#BBBBBB"
-                app:shape_strokeSize="1dp"
-                app:shape_radius="20dp"
-                android:paddingHorizontal="12dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:textSize="14dp"/>
-            <!-- Internet button - Hidden -->
-            <ToggleButton
-                android:id="@+id/internetToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:visibility="gone"
-                android:textOn="🌐 Internet"
-                android:textOff="🌐 Internet"
-                android:textSize="14sp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:textColor="@color/toggle_button_text_color_flat"
-                android:checked="false"
-                android:minWidth="0dp"
-                android:minHeight="0dp" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

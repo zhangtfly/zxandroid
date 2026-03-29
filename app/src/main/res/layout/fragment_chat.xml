@@ -413,11 +413,80 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
-        android:background="?android:attr/colorBackground"
         android:elevation="8dp"
-        android:padding="12dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingHorizontal="12dp"
         android:visibility="visible">
+        <!-- 功能按钮区域 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="start">
 
+            <!-- 推理按钮 -->
+            <ToggleButton
+                android:id="@+id/thinkingToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textOn="🧠 རིག་འདེད།"
+                android:textOff="🧠 རིག་འདེད།"
+                android:textSize="14sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@drawable/thinking_button_border"
+                android:textColor="@color/toggle_button_text_color_flat"
+                android:checked="false"
+                android:layout_marginEnd="16dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp" />
+            <com.hjq.shape.layout.ShapeLinearLayout
+                android:id="@+id/save_img"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                app:shape_solidColor="@color/white"
+                app:shape_strokeColor="#BBBBBB"
+                app:shape_strokeSize="1dp"
+                android:paddingHorizontal="12dp"
+                app:shape_radius="20dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_upload_image"/>
+                <com.hjq.shape.view.ShapeTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:text="འགྲུབ་བཟུང་"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:textSize="14dp"/>
+            </com.hjq.shape.layout.ShapeLinearLayout>
+
+
+            <!-- 联网按钮 - 已隐藏 -->
+            <ToggleButton
+                android:id="@+id/internetToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textOn="🌐 དྲ་སྤྲེལ།"
+                android:textOff="🌐 དྲ་སྤྲེལ།"
+                android:textSize="14sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textColor="@color/toggle_button_text_color_flat"
+                android:checked="false"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
         <!-- 测试按钮（仅Debug版本显示） -->
         <Button
             android:id="@+id/testVoiceButton"
@@ -552,63 +621,6 @@
                 android:contentDescription="སྐུར་བ།"
                 android:scaleType="center"
                 android:enabled="false" />
-
-        </LinearLayout>
-
-        <!-- 功能按钮区域 -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:gravity="start">
-
-            <!-- 推理按钮 -->
-            <ToggleButton
-                android:id="@+id/thinkingToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:textOn="🧠 རིག་འདེད།"
-                android:textOff="🧠 རིག་འདེད།"
-                android:textSize="14sp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:background="@drawable/thinking_button_border"
-                android:textColor="@color/toggle_button_text_color_flat"
-                android:checked="false"
-                android:layout_marginEnd="16dp"
-                android:minWidth="0dp"
-                android:minHeight="0dp" />
-            <com.hjq.shape.view.ShapeTextView
-                android:id="@+id/save_img"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:text="འགྲུབ་བཟུང་"
-                app:shape_solidColor="@color/white"
-                app:shape_strokeColor="#BBBBBB"
-                app:shape_strokeSize="1dp"
-                app:shape_radius="20dp"
-                android:paddingHorizontal="12dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:textSize="14dp"/>
-
-            <!-- 联网按钮 - 已隐藏 -->
-            <ToggleButton
-                android:id="@+id/internetToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:textOn="🌐 དྲ་སྤྲེལ།"
-                android:textOff="🌐 དྲ་སྤྲེལ།"
-                android:textSize="14sp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:textColor="@color/toggle_button_text_color_flat"
-                android:checked="false"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:visibility="gone" />
 
         </LinearLayout>
 

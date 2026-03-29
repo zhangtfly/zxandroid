@@ -438,19 +438,30 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp" />
 
-            <com.hjq.shape.view.ShapeTextView
+            <com.hjq.shape.layout.ShapeLinearLayout
                 android:id="@+id/save_img"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:text="上传图片"
+                android:orientation="horizontal"
                 app:shape_solidColor="@color/white"
                 app:shape_strokeColor="#BBBBBB"
                 app:shape_strokeSize="1dp"
-                app:shape_radius="20dp"
                 android:paddingHorizontal="12dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:textSize="14dp"/>
+                app:shape_radius="20dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_upload_image"/>
+                <com.hjq.shape.view.ShapeTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:text="上传图片"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:textSize="14dp"/>
+            </com.hjq.shape.layout.ShapeLinearLayout>
 
             <!-- 联网按钮 - 已隐藏 -->
             <ToggleButton

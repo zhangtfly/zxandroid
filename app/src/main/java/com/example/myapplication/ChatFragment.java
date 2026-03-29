@@ -39,11 +39,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.myapplication.http.api.SendMessageApi;
 import com.example.myapplication.http.BaseUrl;
-import com.example.myapplication.http.model.HttpData;
+import com.example.myapplication.http.api.SendMessageApi;
 import com.example.myapplication.login.LoginV2Activity;
-import com.example.myapplication.login.bean.LoginV2Bean;
 import com.example.myapplication.login.utils.Base64Util;
 import com.example.myapplication.utils.TokenManager;
 import com.hjq.http.EasyConfig;
@@ -52,7 +50,7 @@ import com.hjq.http.listener.HttpCallbackProxy;
 import com.hjq.http.listener.OnHttpListener;
 import com.hjq.permissions.XXPermissions;
 import com.hjq.permissions.permission.PermissionLists;
-import com.hjq.shape.view.ShapeTextView;
+import com.hjq.shape.layout.ShapeLinearLayout;
 import com.hjq.toast.Toaster;
 
 import org.json.JSONArray;
@@ -64,6 +62,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.noties.markwon.Markwon;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -71,8 +70,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
-import io.noties.markwon.Markwon;
 
 public class ChatFragment extends Fragment implements OnHttpListener {
     private static final int REQUEST_ALBUM = 1001;
@@ -107,7 +104,7 @@ public class ChatFragment extends Fragment implements OnHttpListener {
     private ImageButton audioButton;
 
     private ToggleButton thinkingToggle;
-    private ShapeTextView upLoadImg;
+    private ShapeLinearLayout upLoadImg;
     private ToggleButton internetToggle;
 
     private SpeechRecognitionManager speechManager;
@@ -286,24 +283,24 @@ public class ChatFragment extends Fragment implements OnHttpListener {
             });
         } else {
             // 英文模式：初始显示问候页（Hello! I am SunshineGLM...）
-            if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
-                view.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (chatGreetingLayout != null) {
-                            chatGreetingLayout.setVisibility(View.VISIBLE);  // 显示问候页
-                        }
-                        if (centerLayout != null) {
-                            centerLayout.setVisibility(View.GONE);  // 隐藏主页
-                        }
-                        View greetingText = view.findViewById(R.id.greetingText);
-                        if (greetingText != null && greetingText instanceof TextView) {
-                            ((TextView) greetingText).setText("");
-                            greetingText.setVisibility(View.GONE);
-                        }
-                    }
-                });
-            }
+//            if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
+//                view.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (chatGreetingLayout != null) {
+//                            chatGreetingLayout.setVisibility(View.VISIBLE);  // 显示问候页
+//                        }
+//                        if (centerLayout != null) {
+//                            centerLayout.setVisibility(View.GONE);  // 隐藏主页
+//                        }
+//                        View greetingText = view.findViewById(R.id.greetingText);
+//                        if (greetingText != null && greetingText instanceof TextView) {
+//                            ((TextView) greetingText).setText("");
+//                            greetingText.setVisibility(View.GONE);
+//                        }
+//                    }
+//                });
+//            }
         }
 
         return view;
@@ -1039,13 +1036,13 @@ public class ChatFragment extends Fragment implements OnHttpListener {
                         com.example.myapplication.utils.TokenManager tokenManager =
                                 new com.example.myapplication.utils.TokenManager(getContext());
                         tokenManager.clearUserInfo();
-
+                        EasyConfig.getInstance().removeHeader("Authorization");
                         safeShowToast("已退出登录");
 
                         // 跳转到登录页
                         Intent intent = new Intent(getActivity(), LoginV2Activity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-                        getActivity().finish();
                     }
                 })
                 .setNegativeButton("取消", null)
@@ -1078,7 +1075,7 @@ public class ChatFragment extends Fragment implements OnHttpListener {
             }
 
             if (menuLogout != null) {
-                menuLogout.setVisibility(View.GONE);
+                menuLogout.setVisibility(View.VISIBLE);
             }
         } else {
 
@@ -1159,8 +1156,8 @@ public class ChatFragment extends Fragment implements OnHttpListener {
 
             // 英文模式：显示问候页（Hello! I am SunshineGLM...）
             if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
-                chatGreetingLayout.setVisibility(View.VISIBLE);  // 显示问候页
-                centerLayout.setVisibility(View.GONE);  // 隐藏主页
+                chatGreetingLayout.setVisibility(View.GONE);  // 显示问候页
+                centerLayout.setVisibility(View.VISIBLE);  // 隐藏主页
 
                 View greetingText = getView().findViewById(R.id.greetingText);
                 if (greetingText != null && greetingText instanceof TextView) {
@@ -1169,8 +1166,8 @@ public class ChatFragment extends Fragment implements OnHttpListener {
                 }
             } else {
                 // 藏文和中文：显示主页
-                chatGreetingLayout.setVisibility(View.VISIBLE);
-                centerLayout.setVisibility(View.GONE);
+                chatGreetingLayout.setVisibility(View.GONE);
+                centerLayout.setVisibility(View.VISIBLE);
 
                 View greetingText = getView().findViewById(R.id.greetingText);
                 if (greetingText != null && greetingText instanceof TextView) {
@@ -1187,9 +1184,10 @@ public class ChatFragment extends Fragment implements OnHttpListener {
         }
 
         // 英文模式：聊天按钮不做任何操作（保持问候页）
-        if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
-            return;
-        }
+//        if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
+//            return;
+//        }
+        if (true) return;
 
         // 藏文和中文模式：在主页和问候页之间切换
         if (chatGreetingLayout.getVisibility() == View.VISIBLE) {
@@ -1717,7 +1715,6 @@ public class ChatFragment extends Fragment implements OnHttpListener {
     }
 
     private void sendQuestionToServer(String question) {
-        imageBase64 = null;
         setLoadingState(true);
         JSONObject requestJson = new JSONObject();
         try {
@@ -1755,6 +1752,7 @@ public class ChatFragment extends Fragment implements OnHttpListener {
             requestJson.put("enable_thinking", true);
             android.util.Log.d("ChatFragment", "Content-Type: application/json; charset=utf-8");
             String jsonStr = requestJson.toString();
+            Log.e("jsonStr",jsonStr);
         } catch (JSONException e) {
             e.printStackTrace();
             setLoadingState(false);
@@ -1806,6 +1804,7 @@ public class ChatFragment extends Fragment implements OnHttpListener {
                                 }
                             });
                         }
+                        imageBase64 = null;
                     }
 
                     @Override
@@ -1825,6 +1824,7 @@ public class ChatFragment extends Fragment implements OnHttpListener {
                                 addBotMessage(errorMsg);
                             }
                         });
+                        imageBase64 = null;
                     }
                 });
     }
