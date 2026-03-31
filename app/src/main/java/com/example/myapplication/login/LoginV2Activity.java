@@ -251,7 +251,7 @@ public class LoginV2Activity extends BaseActivity {
 
                     @Override
                     public void onHttpSuccess(HttpData<LoginV2Bean> result) {
-                        if (result.getData() != null) {
+                        if ( result!=null&&result.getData() != null) {
                             tokenManager.saveUserInfo(
                                     result.getData().getToken(),
                                     result.getData().getId(),
@@ -320,7 +320,7 @@ public class LoginV2Activity extends BaseActivity {
 
                     @Override
                     public void onHttpSuccess(HttpData<LoginV2Bean> result) {
-                        if (result.getData() != null) {
+                        if ( result!=null&&result.getData() != null) {
                             tokenManager.saveUserInfo(
                                     result.getData().getToken(),
                                     result.getData().getId(),
@@ -441,7 +441,7 @@ public class LoginV2Activity extends BaseActivity {
 
                         @Override
                         public void onHttpSuccess(HttpData<LoginV2Bean> result) {
-                            if (result.getData() != null) {
+                            if ( result!=null&&result.getData() != null) {
                                 tokenManager.saveUserInfo(
                                         result.getData().getToken(),
                                         result.getData().getId(),
@@ -466,7 +466,7 @@ public class LoginV2Activity extends BaseActivity {
 
                         @Override
                         public void onHttpSuccess(HttpData<LoginV2Bean> result) {
-                            if (result.getData() != null) {
+                            if ( result!=null&&result.getData() != null) {
                                 tokenManager.saveUserInfo(
                                         result.getData().getToken(),
                                         result.getData().getId(),
@@ -522,7 +522,7 @@ public class LoginV2Activity extends BaseActivity {
 
                     @Override
                     public void onHttpSuccess(HttpData<RequestCodeBean> result) {
-                        if (result.getData() != null && result.getData().isSuccess()) {
+                        if (result!=null&&result.getData() != null && result.getData().isSuccess()) {
                             view.start();
                         }
                         Toaster.show(result.getData().getMessage());
@@ -595,6 +595,7 @@ public class LoginV2Activity extends BaseActivity {
     // 语言切换
     private void setLanguageUI(String language) {
         LanguageManager.getInstance(this).setLanguage(language);
+        this.language = LanguageManager.getInstance(this).getLanguage();
         switch (language) {
             case LanguageManager.LANGUAGE_CHINESE:
                 languageCn.setSelected(true);

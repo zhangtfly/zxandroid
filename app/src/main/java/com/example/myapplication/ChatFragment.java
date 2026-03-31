@@ -1812,21 +1812,23 @@ public class ChatFragment extends Fragment implements OnHttpListener {
                     @Override
                     public void onHttpFail(@NonNull Throwable throwable) {
                         super.onHttpFail(throwable);
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                setLoadingState(false);
+                        if (getActivity()!=null){
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    setLoadingState(false);
 
-                                String errorMsg = "❌ དྲ་བའི་ཞུ་བ་ཕམ་པ།\n\n";
-                                errorMsg += "རྒྱུ་མཚན་སྲིད་པ།\n";
-                                errorMsg += "• དྲ་བའི་འབྲེལ་མཐུད་ཆད་པ།\n";
-                                errorMsg += "• ཞབས་ཞུ་འཕྲུལ་ཆས་ལན་མ་སྤྲད་པ།\n";
-                                errorMsg += "• ཞུ་བའི་དུས་ཚོད་ཡོལ་བ།\n\n";
-                                errorMsg += "དྲ་བའི་འབྲེལ་མཐུད་ཞིབ་བཤེར་བྱས་རྗེས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།";
-                                addBotMessage(errorMsg);
-                            }
-                        });
-                        imageBase64 = null;
+                                    String errorMsg = "❌ དྲ་བའི་ཞུ་བ་ཕམ་པ།\n\n";
+                                    errorMsg += "རྒྱུ་མཚན་སྲིད་པ།\n";
+                                    errorMsg += "• དྲ་བའི་འབྲེལ་མཐུད་ཆད་པ།\n";
+                                    errorMsg += "• ཞབས་ཞུ་འཕྲུལ་ཆས་ལན་མ་སྤྲད་པ།\n";
+                                    errorMsg += "• ཞུ་བའི་དུས་ཚོད་ཡོལ་བ།\n\n";
+                                    errorMsg += "དྲ་བའི་འབྲེལ་མཐུད་ཞིབ་བཤེར་བྱས་རྗེས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་རོགས།";
+                                    addBotMessage(errorMsg);
+                                }
+                            });
+                            imageBase64 = null;
+                        }
                     }
                 });
     }

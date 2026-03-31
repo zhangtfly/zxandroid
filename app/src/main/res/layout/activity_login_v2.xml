@@ -1,162 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7f7f2"
-    android:paddingTop="30dp"
-    android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/login_bg" />
+    android:background="#f7f7f2">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:background="#f7f7f2"
+        android:orientation="vertical"
+        android:paddingTop="30dp">
 
-        <include layout="@layout/layout_view" />
 
-        <include layout="@layout/register_view" />
-    </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/login_bg" />
 
-    <LinearLayout
-        android:id="@+id/login_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/no_account"
+            <include layout="@layout/layout_view" />
+
+            <include layout="@layout/register_view" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/login_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="还没有账号？"
-            android:textColor="#333333"
-            android:paddingVertical="12dp"
-            android:paddingLeft="12dp"
-            android:textSize="15dp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/register_now"
+            <TextView
+                android:id="@+id/no_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:paddingLeft="12dp"
+                android:text="还没有账号？"
+                android:textColor="#333333"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/register_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:paddingVertical="12dp"
+                android:paddingRight="12dp"
+                android:text="立即注册"
+                android:textColor="#4ea8ca"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/register_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:paddingVertical="12dp"
-            android:paddingRight="12dp"
-            android:text="立即注册"
-            android:textColor="#4ea8ca"
-            android:textSize="15dp" />
-    </LinearLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/register_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="12dp"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/no_account_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:paddingLeft="12dp"
+                android:text="已有账号？"
+                android:textColor="#333333"
+                android:textSize="15dp" />
 
-        <TextView
-            android:id="@+id/no_account_register"
+            <TextView
+                android:id="@+id/register_now_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:paddingVertical="12dp"
+                android:paddingRight="12dp"
+                android:text="去登录"
+                android:textColor="#4ea8ca"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="已有账号？"
-            android:textColor="#333333"
-            android:paddingVertical="12dp"
-            android:paddingLeft="12dp"
-            android:textSize="15dp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <com.hjq.shape.view.ShapeTextView
+                android:id="@+id/language_bo"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="12dp"
+                android:gravity="center"
+                android:paddingHorizontal="30dp"
+                android:text="བོད་ཡིག། "
+                android:textSize="12dp"
+                app:shape_radius="30dp"
+                app:shape_solidColor="#ffffff"
+                app:shape_solidSelectedColor="#93c9db"
+                app:shape_strokeColor="#283337"
+                app:shape_strokeSelectedColor="#4ea8ca"
+                app:shape_strokeSize="1dp"
+                app:shape_textColor="#333333"
+                app:shape_textSelectedColor="#ffffff" />
+
+            <com.hjq.shape.view.ShapeTextView
+                android:id="@+id/language_cn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="12dp"
+                android:gravity="center"
+                android:paddingHorizontal="30dp"
+                android:text="中文"
+                android:textSize="12dp"
+                app:shape_radius="30dp"
+                app:shape_solidColor="#ffffff"
+                app:shape_solidSelectedColor="#93c9db"
+                app:shape_strokeColor="#283337"
+                app:shape_strokeSelectedColor="#4ea8ca"
+                app:shape_strokeSize="1dp"
+                app:shape_textColor="#333333"
+                app:shape_textSelectedColor="#ffffff" />
+
+            <com.hjq.shape.view.ShapeTextView
+                android:id="@+id/language_en"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingHorizontal="30dp"
+                android:text="English"
+                android:textSize="12dp"
+                app:shape_radius="30dp"
+                app:shape_solidColor="#ffffff"
+                app:shape_solidSelectedColor="#93c9db"
+                app:shape_strokeColor="#283337"
+                app:shape_strokeSelectedColor="#4ea8ca"
+                app:shape_strokeSize="1dp"
+                app:shape_textColor="#333333"
+                app:shape_textSelectedColor="#ffffff" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/register_now_register"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:text="去登录"
-            android:paddingVertical="12dp"
-            android:paddingRight="12dp"
-            android:textColor="#4ea8ca"
-            android:textSize="15dp" />
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:text="版权所有 © 西藏大学藏IP:05000064号 藏公网安备2401000200023号"
+            android:textColor="#666666"
+            android:textSize="12dp" />
+
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
-
-        <com.hjq.shape.view.ShapeTextView
-            android:id="@+id/language_bo"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="12dp"
-            android:gravity="center"
-            android:paddingHorizontal="30dp"
-            android:text="བོད་ཡིག། "
-            android:textSize="12dp"
-            app:shape_radius="30dp"
-            app:shape_solidColor="#ffffff"
-            app:shape_solidSelectedColor="#93c9db"
-            app:shape_strokeColor="#283337"
-            app:shape_strokeSelectedColor="#4ea8ca"
-            app:shape_strokeSize="1dp"
-            app:shape_textColor="#333333"
-            app:shape_textSelectedColor="#ffffff" />
-
-        <com.hjq.shape.view.ShapeTextView
-            android:id="@+id/language_cn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="12dp"
-            android:gravity="center"
-            android:paddingHorizontal="30dp"
-            android:text="中文"
-            android:textSize="12dp"
-            app:shape_radius="30dp"
-            app:shape_solidColor="#ffffff"
-            app:shape_solidSelectedColor="#93c9db"
-            app:shape_strokeColor="#283337"
-            app:shape_strokeSelectedColor="#4ea8ca"
-            app:shape_strokeSize="1dp"
-            app:shape_textColor="#333333"
-            app:shape_textSelectedColor="#ffffff" />
-
-        <com.hjq.shape.view.ShapeTextView
-            android:id="@+id/language_en"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingHorizontal="30dp"
-            android:text="English"
-            android:textSize="12dp"
-            app:shape_radius="30dp"
-            app:shape_solidColor="#ffffff"
-            app:shape_solidSelectedColor="#93c9db"
-            app:shape_strokeColor="#283337"
-            app:shape_strokeSelectedColor="#4ea8ca"
-            app:shape_strokeSize="1dp"
-            app:shape_textColor="#333333"
-            app:shape_textSelectedColor="#ffffff" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="80dp"
-        android:layout_marginBottom="30dp"
-        android:gravity="center_horizontal"
-        android:text="版权所有 © 西藏大学藏IP:05000064号 藏公网安备2401000200023号"
-        android:textColor="#666666"
-        android:textSize="12dp" />
-</LinearLayout>
+</ScrollView>
