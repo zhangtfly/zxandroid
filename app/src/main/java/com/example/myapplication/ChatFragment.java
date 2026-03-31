@@ -445,7 +445,7 @@ public class ChatFragment extends Fragment implements OnHttpListener {
     }
 
     private void setupSpeechManager() {
-        speechManager = new SpeechRecognitionManager(getContext(), client);
+        speechManager = new SpeechRecognitionManager(getContext(),getActivity(), client);
         ttsManager = new TtsManager(getContext());
         realtimeTtsManager = new RealtimeTtsManager(getContext());  // 初始化实时TTS管理器
 

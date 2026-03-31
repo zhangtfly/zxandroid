@@ -31,6 +31,7 @@ import com.hjq.http.exception.ResponseException;
 import com.hjq.http.exception.ServerException;
 import com.hjq.http.exception.TimeoutException;
 import com.hjq.http.request.HttpRequest;
+import com.hjq.toast.Toaster;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -133,6 +134,10 @@ public final class RequestHandler implements IRequestHandler {
             if (model.isTokenFailure()) {
                 // 代表登录失效，需要重新登录
                 throw new TokenException(mApplication.getString(R.string.http_token_error));
+            }
+            if (model.isRequestSuccessError()){
+                Toaster.show(model.getResultDesc());
+                return null;
             }
             // 代表执行失败
             throw new ResultException(model.getResultDesc(), model);

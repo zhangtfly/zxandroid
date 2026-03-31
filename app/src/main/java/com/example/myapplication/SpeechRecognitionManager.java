@@ -9,6 +9,17 @@ import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+
+import com.example.myapplication.http.BaseUrl;
+import com.example.myapplication.http.api.LoginVisitorV2Api;
+import com.example.myapplication.http.model.HttpData;
+import com.example.myapplication.login.bean.LoginV2Bean;
+import com.example.myapplication.utils.TokenManager;
+import com.hjq.http.EasyHttp;
+import com.hjq.http.listener.HttpCallbackProxy;
+import com.hjq.http.listener.OnHttpListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,10 +36,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class SpeechRecognitionManager {
+public class SpeechRecognitionManager implements OnHttpListener {
     private static final String TAG = "SpeechRecognition";
 
-    private static final String API_URL = "http://222.19.82.143:7100/api/v1";
+    private static final String API_URL = BaseUrl.BaseUrl+"api/v1";
+    private LifecycleOwner lifecycleOwner; // 新增：正确持有 LifecycleOwner
     private static final String LANG_TYPE = "bo-CN";
 
     private static final int SAMPLE_RATE = 16000;
@@ -50,6 +62,16 @@ public class SpeechRecognitionManager {
 
     private RecognitionCallback callback;
 
+    @Override
+    public void onHttpSuccess(@NonNull Object result) {
+
+    }
+
+    @Override
+    public void onHttpFail(@NonNull Throwable throwable) {
+
+    }
+
     public interface RecognitionCallback {
         void onRecordingStart();
         void onRecordingStop();
@@ -58,8 +80,9 @@ public class SpeechRecognitionManager {
         void onAmplitudeChanged(float amplitude);
     }
 
-    public SpeechRecognitionManager(Context context, OkHttpClient client) {
+    public SpeechRecognitionManager(Context context,LifecycleOwner lifecycleOwner, OkHttpClient client) {
         this.context = context.getApplicationContext(); // 修复：避免内存泄漏
+        this.lifecycleOwner = lifecycleOwner;
         this.client = client;
     }
 
@@ -269,62 +292,114 @@ public class SpeechRecognitionManager {
         byte[] wavData = convertToWav(audioBytes);
         Log.d(TAG, "📤 发送语音识别请求，音频大小: " + wavData.length + " bytes");
 
-        String url = API_URL +
+        String url =
                 "?lang_type=" + LANG_TYPE +
                 "&format=wav" +
                 "&sample_rate=" + SAMPLE_RATE +
                 "&bit_depth=16" +
                 "&enable_punctuation_prediction=true" +
                 "&enable_inverse_text_normalization=true";
-
+        Log.e("voice1",url);
         RequestBody body = RequestBody.create(wavData, MediaType.parse("application/octet-stream"));
-        Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .addHeader("Content-Type", "application/octet-stream")
-                .build();
+        TokenManager tokenManager = new TokenManager(context);
+//        Request request = new Request.Builder()
+//                .url(url)
+//                .post(body)
+//                .addHeader("Content-Type", "application/octet-stream")
+//                .addHeader("Authorization",  "Bearer " + tokenManager.getToken())
+//                .build();
+        EasyHttp.post(lifecycleOwner)
+                .api("api/v1/asr"+url)
+                .body(body)
+                .request(new HttpCallbackProxy<Response>(this) {
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e(TAG, "❌ 请求失败", e);
-                new Handler(Looper.getMainLooper()).post(() -> {
-                    if (callback != null) callback.onRecognitionError("识别失败: " + e.getMessage());
-                });
-            }
+                    @Override
+                    public void onHttpSuccess(Response response) {
+                        if (!response.isSuccessful() || response.body() == null) {
+                            new Handler(Looper.getMainLooper()).post(() -> {
+                                if (callback != null) callback.onRecognitionError("服务器错误: " + response.code());
+                            });
+                            return;
+                        }
 
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (!response.isSuccessful() || response.body() == null) {
-                    new Handler(Looper.getMainLooper()).post(() -> {
-                        if (callback != null) callback.onRecognitionError("服务器错误: " + response.code());
-                    });
-                    return;
-                }
+                        String responseBody = null;
+                        try {
+                            responseBody = response.body().string();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Log.d(TAG, "📥 收到识别结果: " + responseBody);
 
-                String responseBody = response.body().string();
-                Log.d(TAG, "📥 收到识别结果: " + responseBody);
+                        try {
+                            JSONObject json = new JSONObject(responseBody);
+                            if ("00000".equals(json.optString("status"))) {
+                                String result = json.optString("result");
+                                new Handler(Looper.getMainLooper()).post(() -> {
+                                    if (callback != null) callback.onRecognitionSuccess(result);
+                                });
+                            } else {
+                                String msg = json.optString("message", "未知错误");
+                                new Handler(Looper.getMainLooper()).post(() -> {
+                                    if (callback != null) callback.onRecognitionError("识别失败: " + msg);
+                                });
+                            }
+                        } catch (JSONException e) {
+                            new Handler(Looper.getMainLooper()).post(() -> {
+                                if (callback != null) callback.onRecognitionError("解析结果失败");
+                            });
+                        }
+                    }
 
-                try {
-                    JSONObject json = new JSONObject(responseBody);
-                    if ("00000".equals(json.optString("status"))) {
-                        String result = json.optString("result");
+                    @Override
+                    public void onHttpFail(@NonNull Throwable throwable) {
+                        super.onHttpFail(throwable);
+                        Log.e(TAG, "❌ 请求失败", throwable);
                         new Handler(Looper.getMainLooper()).post(() -> {
-                            if (callback != null) callback.onRecognitionSuccess(result);
-                        });
-                    } else {
-                        String msg = json.optString("message", "未知错误");
-                        new Handler(Looper.getMainLooper()).post(() -> {
-                            if (callback != null) callback.onRecognitionError("识别失败: " + msg);
+                            if (callback != null) callback.onRecognitionError("识别失败: " + throwable.getMessage());
                         });
                     }
-                } catch (JSONException e) {
-                    new Handler(Looper.getMainLooper()).post(() -> {
-                        if (callback != null) callback.onRecognitionError("解析结果失败");
-                    });
-                }
-            }
-        });
+                });
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                Log.e(TAG, "❌ 请求失败", e);
+//                new Handler(Looper.getMainLooper()).post(() -> {
+//                    if (callback != null) callback.onRecognitionError("识别失败: " + e.getMessage());
+//                });
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                if (!response.isSuccessful() || response.body() == null) {
+//                    new Handler(Looper.getMainLooper()).post(() -> {
+//                        if (callback != null) callback.onRecognitionError("服务器错误: " + response.code());
+//                    });
+//                    return;
+//                }
+//
+//                String responseBody = response.body().string();
+//                Log.d(TAG, "📥 收到识别结果: " + responseBody);
+//
+//                try {
+//                    JSONObject json = new JSONObject(responseBody);
+//                    if ("00000".equals(json.optString("status"))) {
+//                        String result = json.optString("result");
+//                        new Handler(Looper.getMainLooper()).post(() -> {
+//                            if (callback != null) callback.onRecognitionSuccess(result);
+//                        });
+//                    } else {
+//                        String msg = json.optString("message", "未知错误");
+//                        new Handler(Looper.getMainLooper()).post(() -> {
+//                            if (callback != null) callback.onRecognitionError("识别失败: " + msg);
+//                        });
+//                    }
+//                } catch (JSONException e) {
+//                    new Handler(Looper.getMainLooper()).post(() -> {
+//                        if (callback != null) callback.onRecognitionError("解析结果失败");
+//                    });
+//                }
+//            }
+//        });
     }
 
     private byte[] convertToWav(byte[] pcmData) {
@@ -412,16 +487,30 @@ public class SpeechRecognitionManager {
         Log.d(TAG, "🔌 预连接语音识别接口");
         byte[] emptyWav = convertToWav(new byte[0]);
 
-        String url = API_URL + "?lang_type=" + LANG_TYPE + "&format=wav&sample_rate=" + SAMPLE_RATE + "&bit_depth=16";
+        String url = "?lang_type=" + LANG_TYPE + "&format=wav&sample_rate=" + SAMPLE_RATE + "&bit_depth=16";
+        Log.e("voice2",url);
+        TokenManager tokenManager = new TokenManager(context);
         RequestBody body = RequestBody.create(emptyWav, MediaType.parse("application/octet-stream"));
-        Request request = new Request.Builder().url(url).post(body).addHeader("Content-Type", "application/octet-stream").build();
+        EasyHttp.post(lifecycleOwner)
+                .api("api/v1/asr"+url)
+                .body(body)
+                .request(new HttpCallbackProxy<HttpData<LoginV2Bean>>(this) {
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override public void onFailure(@NonNull Call call, @NonNull IOException e) {}
-            @Override public void onResponse(@NonNull Call call, @NonNull Response response) {
-                if (response.body() != null) response.body().close();
-            }
-        });
+                    @Override
+                    public void onHttpSuccess(HttpData<LoginV2Bean> result) {
+
+                    }
+                });
+//        Request request = new Request.Builder().url(url).post(body).addHeader("Content-Type", "application/octet-stream")
+//                .addHeader("Authorization",  "Bearer " + tokenManager.getToken())
+//                .build();
+//
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override public void onFailure(@NonNull Call call, @NonNull IOException e) {}
+//            @Override public void onResponse(@NonNull Call call, @NonNull Response response) {
+//                if (response.body() != null) response.body().close();
+//            }
+//        });
     }
 
     public void release() {

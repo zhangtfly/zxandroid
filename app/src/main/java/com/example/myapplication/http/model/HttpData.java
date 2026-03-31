@@ -81,6 +81,12 @@ public class HttpData<T> {
     public boolean isRequestSuccess() {
         return "0".equals(code);
     }
+    /**
+     * 是否请求成功
+     */
+    public boolean isRequestSuccessError() {
+        return !"0".equals(code);
+    }
 
     /**
      * 是否 Token 失效
