@@ -688,7 +688,7 @@ public class LoginV2Activity extends BaseActivity {
                 codeLogin.setText("ར་སྤྲོད་ཨང་རྟགས་ཐོ་འཇུག");
                 tvPhone.setText("ཁ་པར་ཨང་གྲངས།");
                 tvCode.setText("ར་སྤྲོད་ཨང་རྟགས།");
-                edPhone.setHint("གཏོང་གཏོང་ཨང་གྲངས་འགྲོ་བཏང་།");
+                edPhone.setHint("ཁ་པར་ཨང་གྲངས་ནང་འཇུག་གནང་རོགས།");
                 etCode.setHint("ར་སྤྲོད་ཨང་རྟགས་ནང་འཇུག་གནང་རོགས།");
                 tvAccount.setText("སྤྱོད་མཁན།");
                 tvPassword.setText("གསང་གྲངས།");
@@ -696,30 +696,31 @@ public class LoginV2Activity extends BaseActivity {
                 forgetPassword.setText("གསང་གྲངས་བརྗེད་པ།");
                 submitLogin.setText("ཐོ་འཇུག");
                 visitorLogin.setText("\uD83D\uDC64  འགྲུལ་པའི་རྣམ་པ་ནས།");
-                visitorTip.setText("འགྲུལ་པའི་རྣམ་པས་ཉིན་རེར་ཐེངས་ 5 བེད་སྤྱོད་བྱེད་ཆོག");
+                visitorTip.setText("འགྲུལ་པས་ཉིན་རེར་ཐེངས་5བེད་སྤྱོད་བྱེད་ཆོག");
                 loginGetCode.setText("ར་སྤྲོད་ཨང་རྟགས་ལེན་པ།");
-                etAccount.setHint("ལས་བྱེད་མིང་འགྲོ་བཏང་དགོས།");
+                etAccount.setHint("སྤྱོད་མཁན་མིང་ནང་འཇུག་གནང་རོགས།");
                 etPassword.setHint("གསང་གྲངས་ནང་འཇུག་གནང་རོགས།");
                 tvOr.setText("ཡང་ན།");
-                noAccount.setText("གཏོང་རྩིས་མིང་མེད་སམ།");
-                registerNow.setText("མྱུར་དུ་ཐོ་འགྲུལ་བྱེད།");
+                noAccount.setText("གཨང་རྟགས་མེད་དམ།");
+                registerNow.setText("མྱུར་དུ་ཐོ་འགོད་བྱེད།");
 
                 registerPhone.setText("ཁ་པར་ཨང་གྲངས།");
-                registerEtPhone.setHint("གཏོང་གཏོང་ཨང་གྲངས་འགྲོ་བཏང་།");
+                registerEtPhone.setHint("ཁ་པར་ཨང་གྲངས་ནང་འཇུག་གནང་རོགས།");
                 registerTvCode.setText("ར་སྤྲོད་ཨང་རྟགས།");
                 registerEtCode.setHint("ར་སྤྲོད་ཨང་རྟགས་ནང་འཇུག་གནང་རོགས།");
                 registerGetCode.setText("ར་སྤྲོད་ཨང་རྟགས་ལེན་པ།");
-                registerTvPassword.setText("མིག་སྒྲིག་བཙུགས།");
-                registerPassword.setHint("ཨང་གྲངས་6ནས20བར་གྱི་མིག་སྒྲིག་འགོད་རོགས།");
-                registerConfirmTvPassword.setText("མིག་སྒྲིག་ལོག་འགོད།");
-                registerConfirmEtPassword.setHint("མིག་སྒྲིག་ཡང་དུ་འགོད་རོགས།");
-                checkLogin.setText("ངསཀྱིསཀླེབསཏེམོསལུགསཡོད།");
-                userAgreement.setText("《ཡོང་ཁུལ་ཞབས་ཞུའི་གཏོང་ལུགས།》");
-                userPolicy.setText("《གསང་བྱེད་སྲིད་ཇུས།》");
-                submitRegister.setText("ཤོག་ཏུ་བཀོད།");
+                registerTvPassword.setText("གསང་གྲངས་སྒྲིག་བཀོད།");
+                registerPassword.setHint("གསང་གྲངས་6-20བར་ནང་འཇུག་གནང་རོགས། ");
+                registerConfirmTvPassword.setText("གསང་གྲངས་གཏན་འཁེལ།");
+                registerConfirmEtPassword.setHint("གསང་གྲངས་ཡང་བསྐྱར་ནང་འཇུག་གནང་རོགས།");
+                // 藏文 —— 最终完美版
+                checkLogin.setText("ངས་");
+                userAgreement.setText("《སྤྱོད་མཁན་གྱི་ཞབས་ཞུའི་གྲོས་མཐུན》དང་");
+                userPolicy.setText("《གསང་དོན་སྲིད་ཇུས》མོས་མཐུན་ཡོད།");
+                submitRegister.setText("ཐོ་འགོད།");
                 submitForget.setText("གཏན་ནས་བཟུང།");
-                noAccountRegister.setText("གཏན་ནས་ཨེ་ཅིག་ཡོད་པས།");
-                registerNowRegister.setText("དགོངས་ཐོ་འགོད།");
+                noAccountRegister.setText("ཨང་རྟགས་ཡོད་དམ།");
+                registerNowRegister.setText("ཐོ་འཇུག");
                 break;
         }
     }

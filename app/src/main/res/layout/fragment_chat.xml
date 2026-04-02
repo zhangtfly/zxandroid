@@ -130,7 +130,7 @@
         android:layout_below="@id/topBar"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="གྲོགས་པོ། དེ་རིང་གང་ནས་འགོ་རྩོམ་རྒྱུ་ཡིན།"
+        android:text="སྐུ་ཁམས་བཟང། དེ་རིང་གང་ནས་འགོ་བརྩམ་རྒྱུ་ཡིན།"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="?android:attr/textColorPrimary"
@@ -228,7 +228,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="ལོ་ལྔའི་འཆར་འགོད་བཅུ་ལྔ་བར་སློབ་སྦྱོང་བྱས་པའི་མྱོང་ཚོར་ཞིག་བྲིས་རོགས།"
+                        android:text="ལོ་ལྔའི་འཆར་འགོད་བཅོ་ལྔ།བར་སློབ་སྦྱོང་བྱས་པའི་མྱོང་ཚོར་ཞིག་བྲིས་རོགས།"
                         android:textSize="15sp"
                         android:textColor="#333333"
                         android:lineSpacingExtra="2dp" />
@@ -236,7 +236,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔍 གསལ་འདེབས།"
+                        android:text="🔍 དཔེར་བརྗོད།"
                         android:textSize="12sp"
                         android:textColor="#999999" />
 
@@ -461,7 +461,7 @@
                 <com.hjq.shape.view.ShapeTextView
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
-                    android:text="འགྲུབ་བཟུང་"
+                    android:text="པར་རིས་བསྐུར་བ།"
                     android:layout_marginLeft="8dp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
@@ -545,7 +545,7 @@
                     android:id="@+id/chatInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="དྲི་བ་འདྲི་རོགས་གནང་།"
+                    android:hint="བཀའ་འདྲི་ཞུ་རོགས་གནང་།"
                     android:background="@android:color/transparent"
                     android:paddingStart="16dp"
                     android:paddingEnd="80dp"

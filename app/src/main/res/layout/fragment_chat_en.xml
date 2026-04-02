@@ -108,7 +108,7 @@
             android:id="@+id/languageSwitchButton"
             android:layout_width="40dp"
             android:layout_height="32dp"
-            android:text="EN"
+            android:text="En"
             android:textSize="14sp"
             android:textColor="?android:attr/textColorSecondary"
             android:background="@drawable/language_button_background"
