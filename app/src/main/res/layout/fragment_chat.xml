@@ -185,8 +185,7 @@
         android:layout_below="@id/greetingText"
         android:layout_above="@id/chatInputContainer"
         android:layout_marginTop="24dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
+        android:paddingHorizontal="5dp"
         android:paddingBottom="16dp"
         android:fillViewport="true"
         android:visibility="visible">
