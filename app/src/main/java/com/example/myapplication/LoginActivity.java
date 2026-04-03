@@ -175,7 +175,8 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (LanguageManager.LANGUAGE_ENGLISH.equals(currentLang)) {
                     etAccount.setHint("Enter phone number");
                 } else {
-                    etAccount.setHint("ཁ་པར་ཨང་གྲངས་འཇུག་རོགས");
+                    etAccount.setHint("ཁ་པར་ཨང་གྲངས་གཏག་རོགས།");
+
                 }
             }
         }

@@ -130,7 +130,7 @@
         android:layout_below="@id/topBar"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="8dp"
-        android:text="སྐུ་ཁམས་བཟང། དེ་རིང་གང་ནས་འགོ་བརྩམ་རྒྱུ་ཡིན།"
+        android:text="སྐུ་ཁམས་བཟང་། དེ་རིང་གང་ནས་འགོ་བརྩམ་རྒྱུ་ཡིན།"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="?android:attr/textColorPrimary"
@@ -227,7 +227,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="ལོ་ལྔའི་འཆར་འགོད་བཅོ་ལྔ།བར་སློབ་སྦྱོང་བྱས་པའི་མྱོང་ཚོར་ཞིག་བྲིས་རོགས།"
+                        android:text="ལོ་ལྔའི་འཆར་འགོད་བཅོ་ལྔ་བར་”སློབ་སྦྱོང་བྱས་པའི་མྱོང་ཚོར་ཞིག་བྲིས་རོགས།"
                         android:textSize="15sp"
                         android:textColor="#333333" />
 
@@ -278,7 +278,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔍 གསལ་འདེབས།"
+                        android:text="🔍 དཔེར་བརྗོད།"
                         android:textSize="12sp"
                         android:textColor="#999999" />
 
@@ -315,14 +315,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="སློབ་གཙོ་ལ་སློབ་ཐོན་མཛད་སྒོའི་ཐོག་གི་གཏམ་བཤད་ཤིག་བྲིས་རོགས།"
+                        android:text="སློབ་གཙོ་ལ་སློབ་ཐོན་མཛད་སྒོའི་ཐོག་གི་གཏམ་བཤད་ཅིག་བྲིས་རོགས།"
                         android:textSize="15sp"
                         android:textColor="#333333" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔍 གསལ་འདེབས།"
+                        android:text="🔍 དཔེར་བརྗོད།"
                         android:textSize="12sp"
                         android:textColor="#999999" />
 
@@ -366,7 +366,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔍 གསལ་འདེབས།"
+                        android:text="🔍 དཔེར་བརྗོད།"
                         android:textSize="12sp"
                         android:textColor="#999999" />
 

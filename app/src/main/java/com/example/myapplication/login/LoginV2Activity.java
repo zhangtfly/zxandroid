@@ -351,7 +351,7 @@ public class LoginV2Activity extends BaseActivity {
         } else if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
             Toaster.show("Enter Verification Code");
         } else {
-            Toaster.show("ར་སྤྲོད་ཨང་རྟགས་ནང་འཇུག་གནང་རོགས།");
+            Toaster.show("ར་སྤྲོད་ཨང་རྟགས་གཏག་རོགས།");
         }
     }
 
@@ -361,7 +361,7 @@ public class LoginV2Activity extends BaseActivity {
         } else if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
             Toaster.show("Enter phone number");
         } else {
-            Toaster.show("ཁ་པར་ཨང་གྲངས་འཇུག་རོགས");
+            Toaster.show("ཁ་པར་ཨང་གྲངས་གཏག་རོགས།");
         }
     }
 
@@ -410,11 +410,11 @@ public class LoginV2Activity extends BaseActivity {
 
     private void showPasswordError() {
         if (LanguageManager.LANGUAGE_CHINESE.equals(language)) {
-            Toaster.show("请输入6-20位密码");
+            Toaster.show("请输入大小写字母和数字（6-20位密码）");
         } else if (LanguageManager.LANGUAGE_ENGLISH.equals(language)) {
-            Toaster.show("Please enter a 6-20 digit password");
+            Toaster.show("Please enter a 6-20 character password including uppercase and lowercase letters and numbers");
         } else {
-            Toaster.show("ཨང་གྲངས་6ནས20བར་གྱི་མིག་སྒྲིག་འགོད་རོགས།");
+            Toaster.show("གསལ་བྱེད་ཆེ་ཆུང་དང་གྲངས་ཀ་6-20བར་གཏག་རོགས།");
         }
     }
 
@@ -627,7 +627,7 @@ public class LoginV2Activity extends BaseActivity {
                 registerEtCode.setHint("请输入验证码");
                 registerGetCode.setText("获取验证码");
                 registerTvPassword.setText("设置密码");
-                registerPassword.setHint("请输入6-20位密码");
+                registerPassword.setHint("请输入大小写字母和数字（6-20位密码）");
                 registerConfirmTvPassword.setText("确认密码");
                 registerConfirmEtPassword.setHint("请再次输入密码");
                 checkLogin.setText("我已阅读并同意");
@@ -668,7 +668,7 @@ public class LoginV2Activity extends BaseActivity {
                 registerEtCode.setHint("Enter Verification Code");
                 registerGetCode.setText("Get Code");
                 registerTvPassword.setText("Set Password");
-                registerPassword.setHint("Please enter a 6-20 digit password");
+                registerPassword.setHint("Please enter a 6-20 character password including uppercase and lowercase letters and numbers");
                 registerConfirmTvPassword.setText("Confirm Password");
                 registerConfirmEtPassword.setHint("Please enter the password again");
                 checkLogin.setText("I have read and agree");
@@ -688,37 +688,37 @@ public class LoginV2Activity extends BaseActivity {
                 codeLogin.setText("ར་སྤྲོད་ཨང་རྟགས་ཐོ་འཇུག");
                 tvPhone.setText("ཁ་པར་ཨང་གྲངས།");
                 tvCode.setText("ར་སྤྲོད་ཨང་རྟགས།");
-                edPhone.setHint("ཁ་པར་ཨང་གྲངས་ནང་འཇུག་གནང་རོགས།");
-                etCode.setHint("ར་སྤྲོད་ཨང་རྟགས་ནང་འཇུག་གནང་རོགས།");
-                tvAccount.setText("སྤྱོད་མཁན།");
+                edPhone.setHint("ཁ་པར་ཨང་གྲངས་གཏག་རོགས།");
+                etCode.setHint("ར་སྤྲོད་ཨང་རྟགས་གཏག་རོགས།");
+                tvAccount.setText("ཁ་པར་ཨང་གྲངས།");
                 tvPassword.setText("གསང་གྲངས།");
                 rememberMe.setText("རང་ཉིད་ཀྱི་ཆ་འཕྲིན་ངེས་པ།");
                 forgetPassword.setText("གསང་གྲངས་བརྗེད་པ།");
                 submitLogin.setText("ཐོ་འཇུག");
                 visitorLogin.setText("\uD83D\uDC64  འགྲུལ་པའི་རྣམ་པ་ནས།");
                 visitorTip.setText("འགྲུལ་པས་ཉིན་རེར་ཐེངས་5བེད་སྤྱོད་བྱེད་ཆོག");
-                loginGetCode.setText("ར་སྤྲོད་ཨང་རྟགས་ལེན་པ།");
-                etAccount.setHint("སྤྱོད་མཁན་མིང་ནང་འཇུག་གནང་རོགས།");
-                etPassword.setHint("གསང་གྲངས་ནང་འཇུག་གནང་རོགས།");
+                loginGetCode.setText("ར་སྤྲོད་ཨང་གྲངས་བསྡུ་ལེན།");
+                etAccount.setHint("ཁ་པར་ཨང་གྲངས་གཏག་རོགས།");
+                etPassword.setHint("གསང་གྲངས་གཏག་རོགས།");
                 tvOr.setText("ཡང་ན།");
-                noAccount.setText("གཨང་རྟགས་མེད་དམ།");
-                registerNow.setText("མྱུར་དུ་ཐོ་འགོད་བྱེད།");
+                noAccount.setText("ཨང་རྟགས་ཡོད་དམ།");
+                registerNow.setText("ཐོ་འགོད།");
 
                 registerPhone.setText("ཁ་པར་ཨང་གྲངས།");
-                registerEtPhone.setHint("ཁ་པར་ཨང་གྲངས་ནང་འཇུག་གནང་རོགས།");
+                registerEtPhone.setHint("ཁ་པར་ཨང་གྲངས་གཏག་རོགས།");
                 registerTvCode.setText("ར་སྤྲོད་ཨང་རྟགས།");
-                registerEtCode.setHint("ར་སྤྲོད་ཨང་རྟགས་ནང་འཇུག་གནང་རོགས།");
-                registerGetCode.setText("ར་སྤྲོད་ཨང་རྟགས་ལེན་པ།");
-                registerTvPassword.setText("གསང་གྲངས་སྒྲིག་བཀོད།");
-                registerPassword.setHint("གསང་གྲངས་6-20བར་ནང་འཇུག་གནང་རོགས། ");
+                registerEtCode.setHint("ར་སྤྲོད་ཨང་རྟགས་གཏག་རོགས།");
+                registerGetCode.setText("ར་སྤྲོད་ཨང་གྲངས་བསྡུ་ལེན།");
+                registerTvPassword.setText("གསང་གྲངས་སྒྲིག་འགོད།");
+                registerPassword.setHint("གསལ་བྱེད་ཆེ་ཆུང་དང་གྲངས་ཀ་6-20བར་གཏག་རོགས།");
                 registerConfirmTvPassword.setText("གསང་གྲངས་གཏན་འཁེལ།");
-                registerConfirmEtPassword.setHint("གསང་གྲངས་ཡང་བསྐྱར་ནང་འཇུག་གནང་རོགས།");
+                registerConfirmEtPassword.setHint("གསང་གྲངས་ཡང་བསྐྱར་གཏག་རོགས།");
                 // 藏文 —— 最终完美版
-                checkLogin.setText("ངས་");
-                userAgreement.setText("《སྤྱོད་མཁན་གྱི་ཞབས་ཞུའི་གྲོས་མཐུན》དང་");
-                userPolicy.setText("《གསང་དོན་སྲིད་ཇུས》མོས་མཐུན་ཡོད།");
+                checkLogin.setText("ངས་བཀླགས་ཤིང་དང་ལེན་བྱས་པ།་");
+                userAgreement.setText("《སྤྱོད་མཁན་གྱི་ཞབས་ཞུའི་གྲོས་ཆིངས།》དང་");
+                userPolicy.setText("《གསང་དོན་སྲིད་ཇུས།》");
                 submitRegister.setText("ཐོ་འགོད།");
-                submitForget.setText("གཏན་ནས་བཟུང།");
+                submitForget.setText("གཏན་འཁེལ།");
                 noAccountRegister.setText("ཨང་རྟགས་ཡོད་དམ།");
                 registerNowRegister.setText("ཐོ་འཇུག");
                 break;
